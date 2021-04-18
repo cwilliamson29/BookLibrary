@@ -46,7 +46,7 @@ function addBookToLibrary() {
 }
 
 function addBookHTML(libraryNum) {
-    bookid = myLibrary[libraryNum];
+
     const newBook = document.createElement("div");
     newBook.className = "books"
     newBook.setAttribute("id", "bookCont" + libraryNum);
