@@ -21,7 +21,7 @@
 
             <div id="addRight">
                 <label>Page Count:</label>
-                <input type="text" id="pages">
+                <input type="text" id="pages" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
                 <br>
                 <button id="submit">ADD BOOK</button>
             </div>

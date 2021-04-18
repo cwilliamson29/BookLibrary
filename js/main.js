@@ -21,41 +21,11 @@ Book.prototype.haveRead = function() {
     }
 }
 
-const b1Name = "2001: a Space Odyssey";
-const b1Author = "Arthur C. Clark";
-const b1Pages = "296";
-const b1Read = "Have Not Read"
-const b1bookNum = "book0";
-
-const b2Name = "Magic of Recluse";
-const b2Author = "L.E. Modesitt, Jr";
-const b2Pages = "501";
-const b2Read = "Have Not Read";
-const b2bookNum = "book1";
-
-const b3Name = "The Eyes Of The Dragon";
-const b3Author = "Stephen King";
-const b3Pages = "384";
-const b3Read = "Have Not Read";
-const b3bookNum = "book2";
-
-const b4Name = "The Ruins of Gorlan";
-const b4Author = "John Flanagan";
-const b4Pages = "288";
-const b4Read = "Have Not Read";
-const b4bookNum = "book3";
-
-const b5Name = "Wizards First Rule";
-const b5Author = "Terry Goodkind";
-const b5Pages = "576";
-const b5Read = "Have Not Read";
-const b5bookNum = "book4";
-
-myLibrary.push(new Book(b1Name, b1Author, b1Pages, b1Read, b1bookNum))
-myLibrary.push(new Book(b2Name, b2Author, b2Pages, b2Read, b2bookNum))
-myLibrary.push(new Book(b3Name, b3Author, b3Pages, b3Read, b3bookNum))
-myLibrary.push(new Book(b4Name, b4Author, b4Pages, b4Read, b4bookNum))
-myLibrary.push(new Book(b5Name, b5Author, b5Pages, b5Read, b5bookNum))
+myLibrary.push(new Book("2001: a Space Odyssey", "Arthur C. Clark", "296", "Have Not Read", "book0"))
+myLibrary.push(new Book("Magic of Recluse", "L.E. Modesitt, Jr", "501", "Have Not Read", "book1"))
+myLibrary.push(new Book("The Eyes Of The Dragon", "Stephen King", "384", "Have Not Read", "book2"))
+myLibrary.push(new Book("The Ruins of Gorlan", "John Flanagan", "288", "Have Not Read", "book3"))
+myLibrary.push(new Book("Wizards First Rule", "Terry Goodkind", "576", "Have Not Read", "book4"))
 
 document.getElementById('submit').addEventListener('click', () => addBookToLibrary());
 

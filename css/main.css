@@ -59,6 +59,10 @@ body {
     width: 50px;
 }
 
+input:invalid {
+    border: 3px solid red;
+}
+
 .books {
     min-width: 275px;
     max-width: 275px;
