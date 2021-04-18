@@ -1,27 +1,27 @@
 let myLibrary = [];
 
-function book(name, author, pages, read, bookNum) {
+function Book(name, author, pages, read, bookNum) {
     this.name = name;
     this.author = author;
     this.pages = pages
     this.read = read
     this.bookNum = bookNum
-    //return { name, author, pages }
+        //return { name, author, pages }
 }
-book.prototype.haveRead = function(){
-    if(this.read === "Have Not Read"){
+Book.prototype.haveRead = function() {
+    if (this.read === "Have Not Read") {
         this.read = "Have Read";
         bookID = this.bookNum;
         document.getElementById(bookID).textContent = this.read
-        
-    }else if(this.read === "Have Read"){
+
+    } else if (this.read === "Have Read") {
         this.read = "Have Not Read"
         bookID = this.bookNum;
         document.getElementById(bookID).textContent = this.read
     }
 }
 
-const b1Name =  "2001: a Space Odyssey";
+const b1Name = "2001: a Space Odyssey";
 const b1Author = "Arthur C. Clark";
 const b1Pages = "296";
 const b1Read = "Have Not Read"
@@ -51,50 +51,51 @@ const b5Pages = "576";
 const b5Read = "Have Not Read";
 const b5bookNum = "book4";
 
-myLibrary.push(new book(b1Name, b1Author, b1Pages, b1Read, b1bookNum))
-myLibrary.push(new book(b2Name, b2Author, b2Pages, b2Read, b2bookNum))
-myLibrary.push(new book(b3Name, b3Author, b3Pages, b3Read, b3bookNum))
-myLibrary.push(new book(b4Name, b4Author, b4Pages, b4Read, b4bookNum))
-myLibrary.push(new book(b5Name, b5Author, b5Pages, b5Read, b5bookNum))
+myLibrary.push(new Book(b1Name, b1Author, b1Pages, b1Read, b1bookNum))
+myLibrary.push(new Book(b2Name, b2Author, b2Pages, b2Read, b2bookNum))
+myLibrary.push(new Book(b3Name, b3Author, b3Pages, b3Read, b3bookNum))
+myLibrary.push(new Book(b4Name, b4Author, b4Pages, b4Read, b4bookNum))
+myLibrary.push(new Book(b5Name, b5Author, b5Pages, b5Read, b5bookNum))
 
-document.getElementById('submit').addEventListener('click', () => addBookToLibrary(addToDisplayBooks));
+document.getElementById('submit').addEventListener('click', () => addBookToLibrary());
 
 //const bookstitle = document.getElementById("title")
 
-function addBookToLibrary(callback) {
+function addBookToLibrary() {
     let Num = myLibrary.length;
     const name = document.getElementById('name').value;
     const author = document.getElementById('author').value;
     const pages = document.getElementById('pages').value;
     const read = "Have Not Read"
-    const bookNum = "book"+Num;
+    const bookNum = "book" + Num;
 
-    myLibrary.push(new book(name, author, pages, read, bookNum))
+    myLibrary.push(new Book(name, author, pages, read, bookNum))
 
-    return callback();
+    let myLibraryEnd = myLibrary.length - 1;
+    addBookHTML(myLibraryEnd);
 }
 
 function addBookHTML(libraryNum) {
     bookid = myLibrary[libraryNum];
     const newBook = document.createElement("div");
     newBook.className = "books"
-    newBook.setAttribute("id", "bookCont"+libraryNum);
+    newBook.setAttribute("id", "bookCont" + libraryNum);
     container.appendChild(newBook);
 
-    const Title = document.createElement('div');
-    Title.innerHTML = myLibrary[libraryNum].name;
-    Title.className = "title"
-    newBook.appendChild(Title);
+    const title = document.createElement('div');
+    title.innerHTML = myLibrary[libraryNum].name;
+    title.className = "title"
+    newBook.appendChild(title);
 
-    const Author = document.createElement('div');
-    Author.innerHTML = "by: " + myLibrary[libraryNum].author;
-    Author.className = "author"
-    newBook.appendChild(Author);
+    const author = document.createElement('div');
+    author.innerHTML = "by: " + myLibrary[libraryNum].author;
+    author.className = "author"
+    newBook.appendChild(author);
 
-    const Pages = document.createElement('div');
-    Pages.innerHTML = "Pages: " + myLibrary[libraryNum].pages;
-    Pages.className = "pages";
-    newBook.appendChild(Pages);
+    const pages = document.createElement('div');
+    pages.innerHTML = "Pages: " + myLibrary[libraryNum].pages;
+    pages.className = "pages";
+    newBook.appendChild(pages);
 
     const statusContainer = document.createElement('div');
     statusContainer.className = "statusContainer";
@@ -107,7 +108,7 @@ function addBookHTML(libraryNum) {
     const checkBox = document.createElement('input');
     checkBox.className = "checked"
     checkBox.setAttribute("type", "checkbox");
-    checkBox.setAttribute("id", "selBook"+libraryNum);
+    checkBox.setAttribute("id", "selBook" + libraryNum);
     toggleSwitch.appendChild(checkBox);
 
     const slider = document.createElement('span');
@@ -116,25 +117,25 @@ function addBookHTML(libraryNum) {
 
     const readStatus = document.createElement('div');
     readStatus.className = "readStatus";
-    readStatus.setAttribute("id", "book"+libraryNum);
+    readStatus.setAttribute("id", "book" + libraryNum);
     readStatus.textContent = myLibrary[libraryNum].read;
     statusContainer.appendChild(readStatus);
 
     const remove = document.createElement('div');
     remove.innerHTML = "REMOVE"
     remove.className = "remove";
-    remove.setAttribute("id", "remove"+libraryNum);
+    remove.setAttribute("id", "remove" + libraryNum);
     newBook.appendChild(remove);
 
-    const removeBook = document.getElementById("remove"+libraryNum);
-    removeBook.addEventListener('click', () => {deleteBook(libraryNum)});
+    const removeBook = document.getElementById("remove" + libraryNum);
+    removeBook.addEventListener('click', () => { deleteBook(libraryNum) });
 
-    const selector = document.querySelector('#selBook'+libraryNum);
-    selector.addEventListener('change', () => {myLibrary[libraryNum].haveRead()});
+    const selector = document.querySelector('#selBook' + libraryNum);
+    selector.addEventListener('change', () => { myLibrary[libraryNum].haveRead() });
 }
 
-function deleteBook(num){
-    const book = document.getElementById("bookCont"+num)
+function deleteBook(num) {
+    const book = document.getElementById("bookCont" + num)
     book.remove()
     delete myLibrary[num];
 }
@@ -148,10 +149,6 @@ function displayBooks() {
         addBookHTML(i);
         ++i
     }
-}
-function addToDisplayBooks() {
-    let myLibraryEnd = myLibrary.length - 1;
-    addBookHTML(myLibraryEnd);
 }
 
 
